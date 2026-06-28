@@ -36,12 +36,7 @@ export default async function BerichtenPage() {
                   <p className="font-display text-base font-extrabold">
                     {bericht.naam}
                   </p>
-                  <a
-                    href={`mailto:${bericht.email}`}
-                    className="text-sm text-orange hover:underline"
-                  >
-                    {bericht.email}
-                  </a>
+                  <p className="text-sm text-ink-muted">{bericht.email}</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <p className="text-xs text-ink-muted">
@@ -61,6 +56,16 @@ export default async function BerichtenPage() {
               <p className="mt-4 text-sm leading-relaxed text-ink-muted">
                 {bericht.bericht}
               </p>
+              <a
+                href={`mailto:${bericht.email}?subject=${encodeURIComponent(
+                  `Re: je bericht aan esseling`
+                )}&body=${encodeURIComponent(
+                  `Hoi ${bericht.naam},\n\n\n\nGroetjes,\nLuka`
+                )}`}
+                className="mt-4 inline-flex items-center gap-2 rounded-md bg-ink px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-orange"
+              >
+                Antwoorden
+              </a>
             </div>
           ))
         )}
